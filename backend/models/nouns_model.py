@@ -1,5 +1,5 @@
 
-from backend.app import db
+from backend.db import db
 import enum
 
 class GenderEnum(enum.Enum):
@@ -20,6 +20,3 @@ class Noun(db.Model):
     article_indef_dat = db.Column(db.String)
     singular = db.Column(db.String)
     plural = db.Column(db.String)
-
-    def __repr__(self):
-        return f"<Noun {self.noun} ({self.meaning})>"

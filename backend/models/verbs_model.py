@@ -1,5 +1,5 @@
 
-from backend.app import db
+from backend.db import db
 
 class Verb(db.Model):
     __tablename__ = "verbs"
