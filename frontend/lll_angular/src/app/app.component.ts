@@ -1,20 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>{{ message }}</h1>`,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'lll_angular';
-  message = 'Loading...';
-
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit() {
-    this.apiService.getTest().subscribe(
-      data => this.message = data,
-      err => this.message = 'Error connecting to API'
-    );
-  }
+export class AppComponent {
+  title = 'Luxembourgish Learning App';
 }
