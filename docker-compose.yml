@@ -19,7 +19,7 @@ services:
       dockerfile: backend/Dockerfile
     container_name: flask_backend
     volumes:
-      - ./backend:/app   # ✅ mount to /app, not /app/backend
+      - ./backend:/app   
     ports:
       - "5000:5000"
     environment:
@@ -27,7 +27,7 @@ services:
       - FLASK_ENV
       - DATABASE_URL
     env_file:
-      - .env              # ✅ (optional) cleaner way to inject environment
+      - .env             
     depends_on:
       - db
 
