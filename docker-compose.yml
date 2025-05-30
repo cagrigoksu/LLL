@@ -31,5 +31,20 @@ services:
     depends_on:
       - db
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: angular_frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend/lll_angular:/app/lll_angular
+      - /app/lll_angular_angular/node_modules
+    working_dir: /app/lll_angular
+    command: ng serve --host 0.0.0.0
+    depends_on:
+      - backend
+
 volumes:
   pgdata:
