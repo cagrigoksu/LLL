@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 from psql_db import db  # use the db from __init__.py
 
@@ -7,6 +8,7 @@ from psql_db import db  # use the db from __init__.py
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
