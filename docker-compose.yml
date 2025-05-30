@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: flask_backend
+    volumes:
+      - ./backend:/app   # ✅ mount to /app, not /app/backend
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP
+      - FLASK_ENV
+      - DATABASE_URL
+    env_file:
+      - .env              # ✅ (optional) cleaner way to inject environment
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

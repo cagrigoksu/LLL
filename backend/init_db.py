@@ -1,6 +1,6 @@
 
-from backend.app import app
-from backend.db import db
+from app import app
+from psql_db import db
 
 with app.app_context():
     db.create_all()

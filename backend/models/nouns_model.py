@@ -1,5 +1,5 @@
 
-from backend.db import db
+from psql_db import db 
 import enum
 
 class GenderEnum(enum.Enum):

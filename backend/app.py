@@ -1,30 +1,23 @@
-
-from backend.db import db 
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
 import os
+from flask import Flask
+from dotenv import load_dotenv
+from psql_db import db  # use the db from __init__.py
 
-# load .env variables
+# load .env file
 load_dotenv()
 
 app = Flask(__name__)
-
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@"
-    f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-)
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# import models
-from backend.models.nouns_model import Noun
-from backend.models.verbs_model import Verb
+from models.nouns_model import Noun
+from models.verbs_model import Verb
 
 @app.route('/')
 def index():
-    return "Luxembourgish Language Learning API is running!"
+    return "Luxembourgish Learning API is working!"
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(host='0.0.0.0', port=5000)

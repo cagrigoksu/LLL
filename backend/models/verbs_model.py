@@ -1,5 +1,5 @@
 
-from backend.db import db
+from psql_db import db 
 
 class Verb(db.Model):
     __tablename__ = "verbs"
