@@ -5,8 +5,10 @@
 
 .sidebar {
   width: 200px;
-  background-color: #f4f4f4;
+  background-color: #bcb4cc;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar ul {
@@ -20,7 +22,7 @@
 
 .sidebar a {
   text-decoration: none;
-  color: #333;
+  color: #443c9c;
 }
 
 .sidebar a.active {
@@ -31,4 +33,25 @@
 .content {
   flex-grow: 1;
   padding: 20px;
+}
+
+.sidebar_logo_container {
+  border-bottom: solid #c3c3c3 1px;
+  text-align: center;
+  color: #242c44;
+
+}
+
+.sidebar_main_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.footer {
+  border-top: solid 1px #c3c3c3;
+  padding-top: 10px;
+  text-align: center;
 }
